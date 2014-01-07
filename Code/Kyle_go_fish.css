@@ -22,7 +22,7 @@ header li {
 	display: inline;
 }
 
-.Content {
+.game {
 	border-style: solid;
 	background: -webkit-linear-gradient(#77BDD9, #87D0ED); /* For Safari */
 	background: -o-linear-gradient(#77BDD9, #87D0ED); /* For Opera 11.1 to 12.0 */
@@ -32,33 +32,7 @@ header li {
 	border-bottom-right-radius: 50px;
 }
 
-#Hand li {
-	list-style: none;
-	display: inline-block;
-	text-indent: -45px;
-}
-
-#Pairs li {
-	list-style: none;
-	display: inline-block;
-	text-indent: -60px;
-}
-
-#Opponent_Info li {
-	list-style: none
-}
-
-#Opponent_Info {
-	background-color: #66AFCC;
-	text-align: center;
-	padding-right: 10px;
-	border-bottom-left-radius: 50px;
-	border-style: solid;
-	border-width: 1px;
-	float: right;
-}
-
-#Hand, #Pairs {
+.hand, .books {
 	border-style: solid;
 	border-width: 1px;
 	background-color: #66AFCC;
@@ -68,30 +42,52 @@ header li {
 	float: left;
 }
 
-#Pairs {
+.hand li {
+	list-style: none;
+	display: inline-block;
+	text-indent: -45px;
+}
+
+.books {
 	border-bottom-right-radius: 50px;
 }
 
-#Actions {
+.books li {
+	list-style: none;
+	display: inline-block;
+	text-indent: -60px;
+}
+
+.opponents {
+	background-color: #66AFCC;
+	text-align: center;
+	padding-right: 10px;
+	border-bottom-left-radius: 50px;
+	border-style: solid;
+	border-width: 1px;
+	float: right;
+}
+
+.opponents li {
+	list-style: none
+}
+/* after this is bad*/
+#bad {
 	clear: both;
 	text-align: center;
 }
 
-#Results {
-	padding-left: 100px;
+.last-turn-results {
 	float: left;
+	padding-left: 100px;
 }
 
-#Interface {
-	padding-right: 100px;
+.turn {
 	float: right;
+	padding-right: 100px;
 }
 
-.Player_name, .Player_cards, .Player_books {
-	font-family: fantasy;
-}
-
-.Content:after {
+.game:after {
     content: ".";
     display: block;
     height: 0;
