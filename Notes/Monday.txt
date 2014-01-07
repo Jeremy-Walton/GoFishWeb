@@ -1,0 +1,21 @@
+Monday 1/6/14
+
+You can’t sustain if you can’t maintain.
+You have to go slow to go fast.
+
+write clean semantic html for our game. does your code reflect your content?
+
+Assignment for today.
+
+Header information about game
+
+Player’s hand, e.g. 5H, 6D, 9C - book of 7’s
+
+Other players # of cards (e.g. Fred has 3 cards, Joe has 2 cards and books of 3’s, Q’s)
+
+Last result and whose turn it is now
+
+Ability to take turn (e.g. ask ___ for ___)
+
+other???
+

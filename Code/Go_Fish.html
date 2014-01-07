@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- 
+Author: Jeremy Walton
+Date Created: 1/6/14
+-->
+<html>
+
+	<head>
+
+		<title>Go Fish</title>
+		<link rel="stylesheet" type="text/css" href="Go_Fish.css">
+
+	</head>
+
+	<body>
+		<header>
+
+			<h1>You: Jeremy. Opponents: Stephen, Braxton, Kyle, Greg, and Eric.</h1>
+
+			<p> 1/6/2014 at 10:00 AM</p>
+
+			<ul>
+				<li id="Navigation_links"><a href="https://www.google.com/">Home</a></li>
+				<li id="Navigation_links"><a href="https://www.google.com/">About</a></li>
+				<li id="Navigation_links"><a href="https://www.google.com/">Rules</a></li>
+			</ul>
+			<p>Jeremy Walton 1/6/2014</p>
+
+		</header>
+
+		<section class="Content">
+
+			<section id="Hand">
+				<h3>Cards</h3>
+				<ul>
+					<li id="Cards"><img src="cards/c2.png" alt="2 of clubs"></li>
+					<li id="Cards"><img src="cards/dq.png" alt="queen of diamonds"></li>
+					<li id="Cards"><img src="cards/sa.png" alt="ace of spades"></li>
+					<li id="Cards"><img src="cards/hk.png" alt="king of hearts"></li>
+					<li id="Cards"><img src="cards/d7.png" alt="7 of diamonds"></li>
+				</ul>
+			</section>
+
+			<section id="Pairs">
+				<h3>Books</h3>
+				<ul>
+					<li id="Books"><img src="cards/ck.png" alt="kings"></li>
+					<li id="Books"><img src="cards/h4.png" alt="4's"></li>
+				</ul>
+			</section>
+
+			<section id="Opponent_Info">
+				<h3>Opponents Info</h3>
+				<!-- Use spans to display card info -->
+				<ul style="list-style: none">
+					<li><span class="Player_name">Stephen</span>'s cards: <span class="Player_cards">3</span>. Books: <span class="Player_books">5</span>'s</li>
+					<li><span class="Player_name">Braxton</span>'s cards: <span class="Player_cards">6</span>. Books: <span class="Player_books"> </span>'s</li>
+					<li><span class="Player_name">Kyle</span>'s cards: <span class="Player_cards">3</span>. Books: <span class="Player_books">6</span>'s</li>
+					<li><span class="Player_name">Greg</span>'s cards: <span class="Player_cards">2</span>. Books: <span class="Player_books">8</span>'s</li>
+					<li><span class="Player_name">Eric</span>'s cards: <span class="Player_cards">8</span>. Books: <span class="Player_books"> </span>'s</li>
+				</ul>
+			</section>	
+
+			<section id="Actions">
+
+				<section id="Results">
+					<h3>Last turn</h3>
+					Greg asked Stephen for 9's and got none. He went fishing. It is Eric's turn.
+				</section>
+
+				<section id="Interface">
+					<h3>What are you going to do?</h3>
+					<form>
+						Ask <select name="players">
+							<option value="Stephen" selected>Stephen</option>
+							<option value="Braxton">Braxton</option>
+							<option value="Kyle">Kyle</option>
+							<option value="Greg">Greg</option>
+							<option value="Eric">Eric</option>
+						</select>
+						for <select name="cards">
+							<option value="c2" selected>2 of Clubs</option>
+							<option value="dq">Queen of Diamonds</option>
+							<option value="sa">Ace of Spades</option>
+							<option value="hk">King of Hearts</option>
+							<option value="d7">7 of Diamonds</option>
+						</select> 
+						<input type="submit" value="Submit">
+					</form>
+				</section>
+
+			</section>
+			<!-- Need to change this part! -->
+			<div id="Fix_background"></div>
+
+		</section>
+
+	</body>
+
+</html>
