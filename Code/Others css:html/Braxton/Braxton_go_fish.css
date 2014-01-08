@@ -1,0 +1,95 @@
+body {
+    background-image:url('cards/water.jpeg');
+    background-repeat:repeat;
+}
+
+header {
+    opacity: 0.8;
+    border-style: solid;
+    text-align: center;
+    background: -webkit-linear-gradient(white, #87D0ED); /* For Safari */
+    background: -o-linear-gradient(white, #87D0ED); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, #87D0ED); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, #87D0ED); /* Standard syntax */
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+header li {
+    list-style: none;
+    display: inline;
+}
+
+.wrapper {
+    opacity: 0.8;
+    border-style: solid;
+    background: -webkit-linear-gradient(#77BDD9, #87D0ED); /* For Safari */
+    background: -o-linear-gradient(#77BDD9, #87D0ED); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#77BDD9, #87D0ED); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#77BDD9, #87D0ED); /* Standard syntax */
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.player_cards, .player_books {
+    border-style: solid;
+    border-width: 1px;
+    background-color: #66AFCC;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+    float: left;
+}
+
+.player_cards li {
+    list-style: none;
+    display: inline-block;
+    text-indent: -45px;
+}
+
+.player_books {
+    border-bottom-right-radius: 50px;
+    padding-left: 100px;
+}
+
+.player_books ul {
+    display: inline-block;
+    text-indent: -60px;
+}
+
+.player_books li {
+    list-style: none;
+    display: inline-block;
+    text-indent: -60px;
+}
+
+aside {
+    background-color: #66AFCC;
+    text-align: center;
+    padding-right: 10px;
+    border-bottom-left-radius: 50px;
+    border-style: solid;
+    border-width: 1px;
+    width: 250px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    top: 66px;
+    right: 10px;
+}
+
+aside li {
+    list-style: none;
+}
+
+.player_request {
+    clear: both;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+}

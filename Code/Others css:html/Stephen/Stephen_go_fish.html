@@ -1,0 +1,113 @@
+<!-- <div class = "Header"> </div>	 -->
+
+<!DOCTYPE html>
+<!-- 
+This is a skeleton html file that you can use to get you started on each new HTML project
+
+Author: Myself
+Date Created: 
+-->
+<html>
+
+	<head>
+		<title>GoFish</title>
+		<!-- <link rel="stylesheet" href="CSS/style1.css"> Stephen's css-->
+		<link rel="stylesheet" href="Stephen_go_fish.css">
+	</head>
+
+	<body>
+
+		<header class="header">
+			<h1>Go Fish!</h1>
+			<h2>With: Demetori, Lindsy Sterling, and Owl City</h2>
+			<nav class="links">
+				<a href="http://boardgames.about.com/od/cardgames/a/go_fish.htm">About</a>
+				<a href="http://www.pagat.com/quartet/gofish.html#fish">Rules</a>
+			</nav>
+		</header>
+
+<!-- Separate header from body with class that has everything after it besides the footer.  All the way up to which card -->
+	<section class="everything_else">
+
+		<section class="identifier">
+		<h2>It is Owl City's Turn</h2>
+		<h2>Owl City</h2>
+		</section>
+
+		<section class="card_list">
+			<h3>These are your cards:</h3>
+			<ul> <!-- id would need to be class - cannot repeat an id. Don't need class here. -->
+				<li class="cards"><img src="cards/s6.png" alt="Six of Spades">
+				<li class="cards"><img src="cards/sj.png" alt="Jack of Spades">
+				<li class="cards"><img src="cards/s2.png" alt="Two of Spades">
+				<li class="cards"><img src="cards/s10.png" alt="Ten of Spades">
+			</ul>
+		</section> <!-- Make divs sections -->
+
+		<section class="books_list">
+			<h3>These are your books:</h3>
+			<ul>
+				<li class="books"><img src="cards/sa.png" alt="Ace of Spades">
+				<li class="books"><img src="cards/sq.png" alt="Queen of Spades">
+				<li class="books"><img src="cards/s5.png" alt="Five of Spades">
+				<li class="books"><img src="cards/sK.png" alt="King of Spades">
+			</ul>
+		</section>		
+
+		<section class="previous_round_results">
+			<div class="previous_round"> <!-- Can be id -->
+				<h3>Previous Round Results</h6>
+				<ul>
+					<li class="previous_round_list"> <p>Owl City asked Lindsey Sterling for Aces.  He received 2 Aces from Lindsey Sterling.  <br>  Owl City has completed a book of Aces.
+					<li class="player_cards"> <p>Owl City has 4 cards</p>
+					<li class="player_cards"> <p>Lindsey Sterling has 7 cards</p>
+					<li class="player_cards"> <p>Demetori has 8 cards</p>
+				</ul>
+			</div>	
+		</section>
+
+		<section class="turns_section">
+			<div class="turn">
+				<h3>Ask for cards:</h6>
+				<form action="">
+					<select name="players">
+					<option value="Demetori">Demetori</option>
+					<option value="Lindsey Sterling">Lindsey Sterling</option>
+					<option value="Owl City">Owl City</option>
+					</select>
+				</form>
+			</div>	
+
+			<div class="which_card">
+				<form action="">
+					<select name="cards">
+					<option value="2">2 of Spades</option>
+					<option value="3">3 of Spades</option>
+					<option value="4">4 of Spades</option>
+					<option value="5">5 of Spades</option>
+					<option value="6">6 of Spades</option>
+					<option value="7">7 of Spades</option>
+					<option value="8">8 of Spades</option>
+					<option value="9">9 of Spades</option>
+					<option value="10">10 of Spades</option>
+					<option value="J">J of Spades</option>
+					<option value="Q">Q of Spades</option>
+					<option value="K">K of Spades</option>
+					<option value="A">A of Spades</option>
+					</select>
+				</form>
+			</div>
+
+			<div class="submit">
+				<input type="submit" value="Submit">
+			</div>
+		</section>
+		</body>
+	</section>
+</html>
+
+<!-- id s are for UNIQUE items.  This ONE.  Classes are for identifying groups of items. -->
+
+<!-- <div id="links">
+			
+		</div>

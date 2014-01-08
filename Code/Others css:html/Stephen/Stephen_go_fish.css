@@ -1,0 +1,79 @@
+body {
+    background-image:url('cards/water.jpeg');
+    background-repeat:repeat;
+}
+
+header {
+    opacity: 0.8;
+    border-style: solid;
+    text-align: center;
+    background: -webkit-linear-gradient(white, #87D0ED); /* For Safari */
+    background: -o-linear-gradient(white, #87D0ED); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, #87D0ED); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, #87D0ED); /* Standard syntax */
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    padding-bottom: 10px;
+}
+
+.everything_else {
+    opacity: 0.8;
+    border-style: solid;
+    background: -webkit-linear-gradient(#77BDD9, #87D0ED); /* For Safari */
+    background: -o-linear-gradient(#77BDD9, #87D0ED); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#77BDD9, #87D0ED); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#77BDD9, #87D0ED); /* Standard syntax */
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.identifier {
+    border-style: solid;
+    text-align: center;
+    background-color: #87D0ED;
+}
+
+.card_list, .books_list {
+    border-style: solid;
+    border-width: 1px;
+    background-color: #66AFCC;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+    float: left;
+}
+
+.card_list li {
+    list-style: none;
+    display: inline-block;
+    text-indent: -45px;
+}
+
+.books_list {
+    border-bottom-right-radius: 50px;
+    padding-left: 100px;
+}
+
+.books_list li {
+    display: inline-block;
+    text-indent: -60px;
+}
+
+.previous_round_results {
+    background-color: #66AFCC;
+    text-align: center;
+    padding-right: 10px;
+    border-bottom-left-radius: 50px;
+    border-style: solid;
+    border-width: 1px;
+    float: right;
+}
+
+.previous_round_results li {
+    list-style: none;
+}
+
+.turns_section {
+    clear: both;
+    text-align: center;
+}
