@@ -1,32 +1,29 @@
 $total-cols: 3
+$default-color: #87D0ED
+$secondary-color: #77BDD9
 
 body
-	background-image: url('../../cards/water.jpeg')
-	background-repeat: repeat
+	background: url('../../cards/water.jpeg') repeat
 
 header
 	opacity: 0.8
 	text-align: center
 	border-style: solid
-	border-top-left-radius: 50px
-	border-top-right-radius: 50px
-	background: -webkit-linear-gradient(white, #87D0ED)
-	background: -o-linear-gradient(white, #87D0ED)
-	background: -moz-linear-gradient(white, #87D0ED)
-	background: linear-gradient(white, #87D0ED)
+	border-radius: 50px 50px 0px 0px
+	background: -webkit-linear-gradient(white, $default-color)
+	background: -o-linear-gradient(white, $default-color)
+	background: -moz-linear-gradient(white, $default-color)
+	background: linear-gradient(white, $default-color)
 	ul
 		padding-left: 0px
 	li
-		margin-left: 6px
-		margin-right: 6px
-		font-size: 20px
+		margin: 0px 6px
+		font-size: 1.25em
 		list-style: none
 		display: inline-block
-		padding: 5px
-		padding-right: 7px
-		padding-left: 7px
+		padding: 5px 7px
 		border-radius: 25px
-		background-color: #87D0ED
+		background-color: $default-color
 		box-shadow: 1px 1px 5px black
 		a 
 			text-decoration: none
@@ -36,34 +33,32 @@ header
 	opacity: 0.8
 	text-align: center
 	padding: 1px 1px
-	border-right: solid 
-	border-left: solid
-	background: -webkit-linear-gradient(#77BDD9, #87D0ED)
-	background: -o-linear-gradient(#77BDD9, #87D0ED)
-	background: -moz-linear-gradient(#77BDD9, #87D0ED)
-	background: linear-gradient(#77BDD9, #87D0ED)
+	border-style: none solid
+	background: -webkit-linear-gradient($secondary-color, $default-color)
+	background: -o-linear-gradient($secondary-color, $default-color)
+	background: -moz-linear-gradient($secondary-color, $default-color)
+	background: linear-gradient($secondary-color, $default-color)
 
 .Content
 	opacity: 0.8
-	border-style: solid
-	border-top: none
 	padding: 1px
-	background: -webkit-linear-gradient(#87D0ED, #77BDD9)
-	background: -o-linear-gradient(#87D0ED, #77BDD9)
-	background: -moz-linear-gradient(#87D0ED, #77BDD9)
-	background: linear-gradient(#87D0ED, #77BDD9)
-	border-bottom-left-radius: 50px
-	border-bottom-right-radius: 50px
+	background: -webkit-linear-gradient($default-color, $secondary-color)
+	background: -o-linear-gradient($default-color, $secondary-color)
+	background: -moz-linear-gradient($default-color, $secondary-color)
+	background: linear-gradient($default-color, $secondary-color)
+	border:
+		radius: 0px 0px 50px 50px
+		style: none solid solid
 	.Rules
-		margin-left: auto
 		max-width: 1368px
-		margin-right: auto
+		margin: 10px auto 0px auto
 		padding: 10px
-		margin-top: 10px
-		-moz-column-count: $total-cols
-		-moz-column-gap: 33%
-		-webkit-column-count: $total-cols
-		-webkit-column-gap : 33%
+		-moz-column:
+			count: $total-cols
+			gap: 33%
+		-webkit-column:
+			count: $total-cols
+			gap: 33%
 		h4
 			text-align: center
 		div
@@ -72,8 +67,7 @@ header
 				color: black
 	.About
 		width: 50%
-		margin-left: auto
-		margin-right: auto
+		margin: 0px auto
 		text-align: center
 	&:after
 		content: "."
@@ -88,26 +82,17 @@ header
 	width: 33%
 	text-align: center
 	vertical-align: top
-
-#Hand li
-	list-style: none
-	display: inline-block
-	text-indent: -35px
-
-#Books
-	border-bottom-right-radius: 50px
 	li
 		list-style: none
 		display: inline-block
-		text-indent: -45px
+		text-indent: -2.1875em
 
-#Actions
+#Results, #Opponent_Info
 	text-align: center
-	#Results, #Opponent_Info
-		display: inline-block
-		width: 50%
-		vertical-align: top
-	#Opponent_Info
+	display: inline-block
+	width: 50%
+	vertical-align: top
+#Opponent_Info
 	ul 
 		padding-left: 0px
 	li
