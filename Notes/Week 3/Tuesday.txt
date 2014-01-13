@@ -1,0 +1,10 @@
+Tuesday
+
+Growing a language: Guy L. Steele Jr.
+
+language must be a pattern from which other languages to grow.
+plan for growth.
+with help from users.
+parts of a language must be designed to help growth.
+need to puts tools for growth in users hands.
+keep it short, strive for truth.

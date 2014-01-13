@@ -1,0 +1,31 @@
+Go Fish Server
+	*Run many games at once. {
+		*Run one game.
+			Run one round with one player.
+			Bring a second player.
+			Multiple people.
+			Begin to end.
+		1 hrs
+		2 hrs
+		4 hrs
+		8 hrs
+		16 hrs
+	}
+	*Play by myself when no one else is around-Robot Player.
+		different levels of Robots.
+	*Play others on the internet.
+	*Play specific people at specific times.(deferred)
+
+	User
+		*Identify self as a player.
+		*Join a game.
+		  + -Start a new game.
+		  + -Join a waiting game.
+		*Play a game.
+		 * -Play until finished.
+		+ Resign from a game.
+		  -stop game or robot takes over.
+		Review game statistics
+		
+
+Don’t hash things that are mutable.
