@@ -3,8 +3,8 @@ section.Subheader
 section.Content
 	section.About
 		p  
-		- @game.players.each do |player|
-			#{player.name}
+		/ - @game.players.each do |player|
+		/ 	#{player.name}
 
 		form action="/gamelist" method="post"
 			p Please enter the username of the player who started your game

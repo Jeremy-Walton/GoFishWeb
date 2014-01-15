@@ -19,18 +19,20 @@ class LoginScreen < Sinatra::Base
 		  redirect '/' #if session['number_of_players'] == GoFish.games[session['game_id']].players.count
 	end
 
-	post '/gamelist' do
-		if GoFish.broker.game_list.include?(params[:game_name])
-			# binding.pry
-			GoFish.broker.game_list[params[:game_name]].add_player(params[:username])
-			session['logged_in'] = true
-			redirect '/'
-		else
-			redirect '/login'
-		end
-	end
+	# post '/gamelist' do
+	# 	if GoFish.broker.game_list.include?(params[:game_name])
+	# 		# binding.pry
+	# 		GoFish.broker.add_player(params[:game_name], session['user_name'])
+	# 		session['logged_in'] = true
+	# 		binding.pry
+	# 		redirect '/'
+	# 	else
+	# 		redirect '/login'
+	# 	end
+	# end
 
 	post('/login') do
+		session['player_names'] = []
 		# need to check if name is already used.
 		if params[:username].strip != '' && params[:gametype] == 'new'
 			if(params[:players] == '1')
@@ -40,6 +42,7 @@ class LoginScreen < Sinatra::Base
 				GoFish.broker.setup_game(session['game_id'])
 				session['user_name'] = params[:username]
 				session['logged_in'] = true
+				session['player_names'].push(params[:username])
 				session['results'] = 'Nobody has gone yet'
 				redirect '/'
 			else
@@ -48,14 +51,29 @@ class LoginScreen < Sinatra::Base
 				GoFish.broker.create_game(session['game_id'])
 				session['user_name'] = params[:username]
 				session['logged_in'] = true
+				session['player_names'].push(params[:username])
 				session['results'] = 'Nobody has gone yet'
-				@game.add_player(params[:username])
 				GoFish.broker.add_player(session['game_id'], params[:username])
+				# binding.pry
 				redirect '/waitscreen'
 			end
 		elsif params[:gametype] == 'old'
 			session['logged_in'] = false
-			redirect '/gamelist'
+			if GoFish.broker.game_list.include?(params[:game_name])
+			    # binding.pry
+				GoFish.broker.add_player(params[:game_name], params[:username])
+				session['game_id'] = params[:game_name]
+				session['player_names'].push(params[:username])
+				session['logged_in'] = true
+				# binding.pry
+				# if session['number_of_players'] == GoFish.broker.game_list[session['game_id']].players.count
+					GoFish.broker.setup_game(params[:game_name])
+					binding.pry
+				# end
+				redirect '/'
+			else
+				redirect '/login'
+			end
 		else
 			redirect '/login'
 		end
@@ -77,16 +95,20 @@ class GoFish < Sinatra::Base
    		end
   	end
   	get '/' do
+  		# player names need to be consistent instead of session based. You can get them from the game.
   		@player_names = []
   		unless @player_names.include?(session['user_name'])
   			@player_names << session['user_name']
   		end
   		@results = session[:results]
   		@game = @@broker.game_list[session['game_id']]
-		@player_names
+		@player_names = session['player_names']
+		@username = session['user_name']
 		@results
 		@game
-		slim :Go_Fish, :locals => {:username => session['user_name']}	
+		@player_names
+		@username
+		slim :Go_Fish	
 	end
 
 	post('/') do

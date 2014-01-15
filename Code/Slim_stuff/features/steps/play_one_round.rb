@@ -20,7 +20,7 @@ class Spinach::Features::PlayOneRound < Spinach::FeatureSteps
     page.should have_text 'Jeremy asked'
     game_id = current_scope.session.driver.request.session['game_id']
     user_name = current_scope.session.driver.request.session['user_name']
-    game = GoFish.games[game_id]
+    game = GoFish.broker.game_list[game_id]
     cards = game.players[0].cards
     cards.each do |card|
       within '#Hand' do
