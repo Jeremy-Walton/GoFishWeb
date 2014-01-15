@@ -1,0 +1,12 @@
+section.Subheader
+	h1 Game List
+section.Content
+	section.About
+		p  
+		- @game.players.each do |player|
+			#{player.name}
+
+		form action="/gamelist" method="post"
+			p Please enter the username of the player who started your game
+			input type="text" name="game_name" required=true
+			input type="submit" value="Submit"

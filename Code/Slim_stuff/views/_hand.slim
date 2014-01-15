@@ -1,6 +1,6 @@
 section#Hand
-		h3 Cards
+		h3 Your Cards
 		ul
 			- @game.players[0].cards.each do |card|
-				li: img src="cards/#{card.suit}#{card.rank}.png" alt="#{card.rank} #{card.suit}"
+				li: img src="cards/#{card.suit.downcase}#{card.rank.downcase}.png" alt="#{card.rank} #{card.suit}"
 				/ use sort to sort cards later.

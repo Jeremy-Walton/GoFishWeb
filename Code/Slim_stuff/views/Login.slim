@@ -1,8 +1,24 @@
 section.Subheader
-	h1 Login
+	h1 Welcome to Go Fish!
 section.Content
 	section.About
 		form action="/login" method="post"
 			p Please enter your name: 
 			input type="text" name="username" required=true
+			br
+			div#new
+				input type="radio" name="gametype" value="new" required=true Create game
+				label  with 
+				select name="players"
+					option value="1" 1
+					option value="2" 2
+					option value="3" 3
+					option value="4" 4
+					option value="5" 5
+					option value='6' 6
+			 	label players.
+			br
+			div#old
+				input type="radio" name="gametype" value="old" required=true Join existing game
+			br
 			input type="submit" value="Submit"

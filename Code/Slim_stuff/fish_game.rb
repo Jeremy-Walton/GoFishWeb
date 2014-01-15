@@ -4,13 +4,17 @@ require_relative './round_results.rb'
 class FishGame
 	attr_reader :players
 
-	def initialize(players=[])
-		@players = players
-		@turn_order = players
+	def initialize()
+		@players = []
 		@deck = Deck.new
 	end
 
+	def add_player(name)
+		@players.push(FishHand.new([], name))
+	end
+
 	def setup
+		@turn_order = @players
 		deal
 	end
 
