@@ -6,6 +6,11 @@ require_relative "./fish_game"
 require_relative "./fish_hand"
 require_relative "./fish_broker"
 
+# Make javascript reload page only if its for particular game instead of all browsers.
+# Results doen't need to display books.
+# Game needs to detect when someone wins.
+# Sort cards displayed.
+
 class LoginScreen < Sinatra::Base
 
 	enable :sessions
@@ -16,8 +21,11 @@ class LoginScreen < Sinatra::Base
 		slim :Game_List
 	end
 
-	get '/waitscreen' do
-		  redirect '/' #if session['number_of_players'] == GoFish.games[session['game_id']].players.count
+	get '/winscreen' do
+		session['logged_in'] = nil
+		GoFish.broker.game_list.delete(session['game_id'])
+		'What you doing here???'
+		# binding.pry
 	end
 
 	post('/login') do
@@ -98,7 +106,11 @@ class GoFish < Sinatra::Base
 		@game
 		@player_names
 		@username
-		slim :Go_Fish	
+		if @game.deck.size == 0
+			redirect '/winscreen'
+		else
+			slim :Go_Fish
+		end	
 	end
 
 	post('/') do
@@ -113,6 +125,11 @@ class GoFish < Sinatra::Base
   			message: 'update page'
 		})
 		@game.ask_player_for_card(params[:cards], @game.whos_turn?, @giver)
+		@game.players.each do |player|
+			if player.cards.count == 0
+				player.take_cards(@game.go_fish)
+			end
+		end
 		redirect '/'
 	end
 

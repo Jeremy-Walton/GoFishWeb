@@ -8,7 +8,9 @@ section#Interface
 				label Ask
 				select name="players"
 					- @player_names.each do |player|
-						option value=player #{player}
+						- if player == @username
+						- else
+							option value=player #{player}
 				label for
 				select name="cards"
 					- @game.players.each do |player|
@@ -17,4 +19,4 @@ section#Interface
 								option value="#{card.rank}"#{card.rank}
 				input type="submit" value="Submit"
 		- else
-			p Please wait until your turn.
+			p #{@game.whos_turn?.name}'s turn.
