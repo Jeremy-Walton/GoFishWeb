@@ -1,19 +1,21 @@
 class Spinach::Features::PlayOneRound < Spinach::FeatureSteps
-  include CommonSteps::Login
+  # include CommonSteps::Login
   step 'a player viewing the page' do
   	visit '/login'
-  	fill_in 'username', :with => 'Jeremy'
-    within '#new' do
-    	choose 'gametype'
-    end
-    page.select '1', :from => 'players'
-    click_on 'Submit'
+      fill_in 'username', :with => 'Jeremy'
+      within '#new' do
+        choose 'gametype'
+      end
+      select '1', :from => 'players'
+      click_on 'Submit'
     current_path.should == '/'
   end
 
   step 'they input stuff' do
-    page.select 'Jeremy', :from => 'players'
-    click_on 'Submit'
+    within '#Interface' do
+      page.select 'Jeremy', :from => 'players'
+      click_on 'Submit'
+    end
   end
 
   step 'the game does what it is supposed to' do

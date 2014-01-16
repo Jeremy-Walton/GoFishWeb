@@ -1,8 +1,11 @@
 section.Subheader
 	h1 
-		- @player_names.each do |player|
-			| #{player}, 
+		- @game.players.each do |player|
+			|	#{player.name} 
 section.Content
+  	
+  	== slim :_pusher
+	    
 	== slim :_hand
 
 	== slim :_books

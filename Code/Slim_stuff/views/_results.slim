@@ -1,6 +1,3 @@
 section#Results
 	h3 Last turn
-	- if @results == 'Nobody has gone yet'
-		p #{@results}
-	- else	
-		p #{@results}
+	p #{@game.results}

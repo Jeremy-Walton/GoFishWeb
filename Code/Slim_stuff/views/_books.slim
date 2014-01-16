@@ -1,5 +1,8 @@
 section#Books
 	h3 Books
 	ul
-		- @game.players[0].books.each do |book|
-				li: img src="cards/#{book.suit}#{book.rank}.png" alt="#{book.rank} #{book.suit}"
+		- @game.players.each do |player|
+				- if player.name == @username
+					- player.books.each do |book|
+						li: img src="cards/c#{book}.png" alt="c#{book}"
+				

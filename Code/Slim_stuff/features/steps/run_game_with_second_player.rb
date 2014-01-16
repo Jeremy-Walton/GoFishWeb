@@ -24,7 +24,7 @@ class Spinach::Features::RunGameWithSecondPlayer < Spinach::FeatureSteps
   end
 
   step 'they\'re succesfully added to the same game' do
-  	# ::Capybara.session_name = 'first person'
+  	::Capybara.session_name = 'first person'
     game_id = current_scope.session.driver.request.session['game_id']
     user_name = current_scope.session.driver.request.session['user_name']
     game = GoFish.broker.game_list[game_id]

@@ -2,11 +2,13 @@ require_relative './deck.rb'
 require_relative './round_results.rb'
 
 class FishGame
-	attr_reader :players
+	attr_reader :players, :max_players, :results, :deck
 
 	def initialize()
 		@players = []
 		@deck = Deck.new
+		@max_players = 10
+		@results = ""
 	end
 
 	def add_player(name)
@@ -16,6 +18,14 @@ class FishGame
 	def setup
 		@turn_order = @players
 		deal
+	end
+
+	def set_max_players(players)
+		@max_players = players
+	end
+
+	def set_results(results)
+		@results = results
 	end
 
 	def whos_turn?
@@ -35,7 +45,7 @@ class FishGame
 			change_turn_order if(cards.first.rank != card_rank)
 		end
 		round_info = RoundResults.new(asker, giver, card_rank, cards.count, books)
-		round_info.get_results
+		@results = round_info.get_results
 	end
 
 	def change_turn_order

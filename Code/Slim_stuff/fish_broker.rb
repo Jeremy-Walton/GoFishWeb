@@ -18,4 +18,12 @@ class FishBroker
 		@game_list[game_id].setup
 	end
 
+	def number_of_players(game_id, players)
+		@game_list[game_id].set_max_players(players)
+	end
+
+	def is_full?(game_id)
+		@game_list[game_id].players.count == @game_list[game_id].max_players.to_i
+	end
+
 end

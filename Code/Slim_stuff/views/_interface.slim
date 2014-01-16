@@ -1,13 +1,20 @@
 section#Interface
 	h3 What are you going to do?
-	/ - if @game.whos_turn?.name == @username
-	form action="/" method="post"
-		label Ask
-		select name="players"
-			- @player_names.each do |player|
-				option value=player #{player}
-		label for
-		select name="cards"
-			- @game.players[0].cards.uniq {|card| card.rank}.each do |card|
-				option value="#{card.rank}"#{card.rank}
-		input type="submit" value="Submit"
+	- if @game.players.count < @game.max_players.to_i
+		p Waiting for other players.
+	- else
+		- if @game.whos_turn?.name == @username
+			form action="/" method="post"
+				label Ask
+				select name="players"
+					- @player_names.each do |player|
+						option value=player #{player}
+				label for
+				select name="cards"
+					- @game.players.each do |player|
+						- if player.name == @username
+							- player.cards.uniq {|card| card.rank}.each do |card|
+								option value="#{card.rank}"#{card.rank}
+				input type="submit" value="Submit"
+		- else
+			p Please wait until your turn.

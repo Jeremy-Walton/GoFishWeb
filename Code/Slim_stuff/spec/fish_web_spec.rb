@@ -39,4 +39,13 @@ describe 'fish broker' do
 		@game_broker.game_list[id].players[1].cards.count.should == 7
 	end
 
+	it "can detect when a game is full" do
+		id = 4
+		@game_broker.create_game(id)
+		@game_broker.number_of_players(id, 2)
+		@game_broker.add_player(id, "Bob")
+		@game_broker.add_player(id, "Jim")
+		@game_broker.is_full?(id).should == true
+	end
+
 end
