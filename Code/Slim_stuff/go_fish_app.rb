@@ -6,10 +6,15 @@ require_relative "./fish_game"
 require_relative "./fish_hand"
 require_relative "./fish_broker"
 
+# use game broker with socket server. players on sockets vs players on browser.
+# canasta as an option (for those who don't want to play go fish)
+# robot players.
+
 # Make javascript reload page only if its for particular game instead of all browsers.
 # Results doen't need to display books.
-# Game needs to detect when someone wins.
+# Game needs to detect who won
 # Sort cards displayed.
+# Push by noon.
 
 class LoginScreen < Sinatra::Base
 
@@ -28,47 +33,59 @@ class LoginScreen < Sinatra::Base
 		# binding.pry
 	end
 
+	def set_session_variables(username)
+		session['game_id'] = username
+		session['user_name'] = username
+		session['logged_in'] = true
+	end
+
+	def prepare_game(username, players)
+		GoFish.broker.create_game(session['game_id'])
+		GoFish.broker.number_of_players(session['game_id'], players)
+		GoFish.broker.game_list[session['game_id']].set_results('Nobody has gone yet')
+		GoFish.broker.add_player(session['game_id'], username)
+	end
+
+	def start_game(game_name)
+		GoFish.broker.setup_game(game_name)
+	end
+
+	def refresh_page
+		Pusher['page_update'].trigger('my_event', {
+	  		message: 'update page'
+		})
+	end
+
 	post('/login') do
 		# need to check if name is already used.
 		if params[:username].strip != '' && params[:gametype] == 'new'
 			if(params[:players] == '1')
-				session['game_id'] = params[:username]
-				GoFish.broker.create_game(session['game_id'])
-				GoFish.broker.add_player(session['game_id'], params[:username])
-				GoFish.broker.setup_game(session['game_id'])
-				GoFish.broker.number_of_players(session['game_id'], 1)
-				session['user_name'] = params[:username]
-				session['logged_in'] = true
-				GoFish.broker.game_list[session['game_id']].set_results('Nobody has gone yet')
+				set_session_variables(params[:username])
+				prepare_game(params[:username], params[:players])
+				start_game(session['game_id'])
 				redirect '/'
 			else
-				session['game_id'] = params[:username]
-				session['number_of_players'] = params[:players]
-				GoFish.broker.create_game(session['game_id'])
-				GoFish.broker.number_of_players(session['game_id'], params[:players])
-				session['user_name'] = params[:username]
-				session['logged_in'] = true
-				GoFish.broker.game_list[session['game_id']].set_results('Nobody has gone yet')
-				GoFish.broker.add_player(session['game_id'], params[:username])
+				set_session_variables(params[:username])
+				prepare_game(params[:username], params[:players])
 				redirect '/'
 			end
 		elsif params[:gametype] == 'old'
+			game_list = GoFish.broker.game_list
 			session['logged_in'] = false
 			session['game_id'] = params[:game_name]
-			if GoFish.broker.game_list.include?(params[:game_name])
-			    # binding.pry
-			    if GoFish.broker.is_full?(session['game_id']) == false
-			    	GoFish.broker.add_player(params[:game_name], params[:username])
-			    end
+			if game_list.include?(params[:game_name])
 				session['user_name'] = params[:username]
 				session['logged_in'] = true
-				GoFish.broker.game_list[session['game_id']].set_results('Nobody has gone yet')
-				Pusher['page_update'].trigger('my_event', {
-	  					message: 'update page'
-				})
-				if GoFish.broker.is_full?(session['game_id'])
-					GoFish.broker.setup_game(params[:game_name])
-				end
+				game_list[session['game_id']].set_results('Nobody has gone yet')
+			    if GoFish.broker.is_full?(session['game_id']) == false
+			    	GoFish.broker.add_player(params[:game_name], params[:username])
+			    	if GoFish.broker.is_full?(session['game_id'])
+						start_game(params[:game_name])
+					end
+			    else
+			    	redirect '/login'
+			    end
+				refresh_page
 				redirect '/'
 			else
 				redirect '/login'
@@ -113,6 +130,12 @@ class GoFish < Sinatra::Base
 		end	
 	end
 
+	def refresh_page
+		Pusher['page_update'].trigger('my_event', {
+	  		message: 'update page'
+		})
+	end
+
 	post('/') do
 		@game = @@broker.game_list[session['game_id']]
 		@game.players.each do |player|
@@ -121,9 +144,7 @@ class GoFish < Sinatra::Base
 			else
 			end
 		end
-		Pusher['page_update'].trigger('my_event', {
-  			message: 'update page'
-		})
+		refresh_page
 		@game.ask_player_for_card(params[:cards], @game.whos_turn?, @giver)
 		@game.players.each do |player|
 			if player.cards.count == 0

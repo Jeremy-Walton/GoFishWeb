@@ -2,17 +2,43 @@ require_relative './deck.rb'
 require_relative './round_results.rb'
 
 class FishGame
-	attr_reader :players, :max_players, :results, :deck
+	attr_reader :players, :max_players, :results, :deck, :winner
 
 	def initialize()
 		@players = []
 		@deck = Deck.new
 		@max_players = 10
 		@results = ""
+		@winner = ''
 	end
 
 	def add_player(name)
 		@players.push(FishHand.new([], name))
+	end
+
+	def count_player_books
+		@winner = '|'
+		book_count, new_book_count = 0, 0
+		ties_list = []
+		@players.each do |player|
+			new_book_count = player.number_of_books
+			if(new_book_count > book_count)
+				book_count = new_book_count
+				@winner = player.name+' |'
+				ties_list = []
+			else
+				ties_list.push(player.name) if (new_book_count == book_count)
+			end		
+		end
+		if(ties_list.size > 0)
+			ties_list.each do |player|
+				@winner += " #{player} |"
+			end
+			@winner = "And the Winners are.. " + @winner + ". You guys rock!"
+		else
+			@winner = "And the Winner is.. "+@winner+". You rock!"
+		end
+		@winner
 	end
 
 	def setup

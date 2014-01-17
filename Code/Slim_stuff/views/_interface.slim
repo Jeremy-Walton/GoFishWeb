@@ -9,6 +9,8 @@ section#Interface
 				select name="players"
 					- @player_names.each do |player|
 						- if player == @username
+							- if @game.players.count == 1
+								option value=player #{player}
 						- else
 							option value=player #{player}
 				label for

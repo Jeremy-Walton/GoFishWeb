@@ -14,12 +14,19 @@ class FishHand
 		@cards.pop
 	end
 
+	def sort
+		@cards.sort! do |card1, card2|
+			card1.rank <=> card2.rank
+		end
+	end
+
 	def number_of_cards
 		@cards.count
 	end
 
 	def take_cards(cards)
 		@cards.push(*cards)
+		sort
 	end
 
 	def got_any?(card_rank)
