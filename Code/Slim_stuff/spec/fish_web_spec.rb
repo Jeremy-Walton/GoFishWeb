@@ -9,8 +9,7 @@ describe 'fish broker' do
 	it "creates a game" do
 		id = 1
 		@game_broker.create_game(id)
-		game = FishGame.new
-		@game_broker.game_list[id].class.should == game.class
+		@game_broker.game_list[id].class.should == FishGame
 	end
 
 	it "can add a player" do

@@ -10,13 +10,19 @@ require_relative "./fish_broker"
 # canasta as an option (for those who don't want to play go fish)
 # robot players.
 
-# Make javascript reload page only if its for particular game instead of all browsers.
-# Results doen't need to display books.
 # Game needs to detect who won
-# Sort cards displayed.
+# Refactor.
 # Push by noon.
+class GameScreen < Sinatra::Base
+	Pusher.url = "http://cb9b39abeab73c4d7276:97dc8edb01064a0a9d6a@api.pusherapp.com/apps/63704"
+	def refresh_page
+		Pusher['page_update'].trigger('my_event', {
+	  		game_id: session['game_id']
+		})
+	end
+end
 
-class LoginScreen < Sinatra::Base
+class LoginScreen < GameScreen
 
 	enable :sessions
 
@@ -48,12 +54,6 @@ class LoginScreen < Sinatra::Base
 
 	def start_game(game_name)
 		GoFish.broker.setup_game(game_name)
-	end
-
-	def refresh_page
-		Pusher['page_update'].trigger('my_event', {
-	  		message: 'update page'
-		})
 	end
 
 	post('/login') do
@@ -96,9 +96,8 @@ class LoginScreen < Sinatra::Base
 	end
 end
 
-class GoFish < Sinatra::Base
+class GoFish < GameScreen
 	@@broker = FishBroker.new
-	Pusher.url = "http://cb9b39abeab73c4d7276:97dc8edb01064a0a9d6a@api.pusherapp.com/apps/63704"
 
 	def self.broker
 		@@broker
@@ -128,12 +127,6 @@ class GoFish < Sinatra::Base
 		else
 			slim :Go_Fish
 		end	
-	end
-
-	def refresh_page
-		Pusher['page_update'].trigger('my_event', {
-	  		message: 'update page'
-		})
 	end
 
 	post('/') do

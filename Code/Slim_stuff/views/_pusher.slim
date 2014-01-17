@@ -2,5 +2,6 @@ javascript:
 	var pusher = new Pusher('cb9b39abeab73c4d7276')
     var channel = pusher.subscribe('page_update')
     channel.bind('my_event', function(data) {
-    	location.reload();
+   		if (data.game_id == "#{session['game_id']}"){
+    		location.reload();}
     })
