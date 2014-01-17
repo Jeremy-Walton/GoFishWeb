@@ -33,7 +33,7 @@ class LoginScreen < GameScreen
 	end
 
 	get '/winscreen' do
-		session['logged_in'] = nil
+		session.delete('logged_in')
 		GoFish.broker.game_list.delete(session['game_id'])
 		'What you doing here???'
 		# binding.pry
@@ -57,7 +57,6 @@ class LoginScreen < GameScreen
 	end
 
 	post('/login') do
-		# need to check if name is already used.
 		if params[:username].strip != '' && params[:gametype] == 'new'
 			if(params[:players] == '1')
 				set_session_variables(params[:username])
@@ -113,6 +112,9 @@ class GoFish < GameScreen
   	get '/' do
   		@results = session['results']
   		@game = @@broker.game_list[session['game_id']]
+  		if @game.deck.size == 0 || @game.nil?
+			redirect '/winscreen'
+		end
   		@player_names = []
   		@game.players.each do |player|
   			@player_names.push(player.name)
@@ -122,11 +124,7 @@ class GoFish < GameScreen
 		@game
 		@player_names
 		@username
-		if @game.deck.size == 0
-			redirect '/winscreen'
-		else
-			slim :Go_Fish
-		end	
+		slim :Go_Fish
 	end
 
 	post('/') do
