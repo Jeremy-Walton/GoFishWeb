@@ -47,4 +47,11 @@ describe 'fish broker' do
 		@game_broker.is_full?(id).should == true
 	end
 
+	it "can add a robot" do
+		id = 5
+		@game_broker.create_game(id)
+		@game_broker.add_robot(id, "Jeremy")
+		@game_broker.game_list[id].players[0].name.should == "Jeremy"
+	end
+
 end

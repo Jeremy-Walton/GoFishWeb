@@ -4,12 +4,12 @@ section.Content
 	section.About
 		form action="/login" method="post"
 			p Please enter your name: 
-			input type="text" name="username" required=true
+			input.Input_Field type="text" placeholder="Display Name" name="username" required=true
 			br
 			div#new
-				input type="radio" name="gametype" value="new" required=true Create game
+				input.Input_Field type="radio" name="gametype" value="new" required=true Create game
 				label  with 
-				select name="players"
+				select.Input_Field name="players"
 					option value="1" 1
 					option value="2" 2
 					option value="3" 3
@@ -19,7 +19,7 @@ section.Content
 			 	label players.
 			br
 			div#old
-				input type="radio" name="gametype" value="old" required=true Join existing game
-				input type="text" name="game_name"
+				input.Input_Field type="radio" name="gametype" value="old" required=true Join existing game(Ask game creator for id.)
+				input.Input_Field type="text" name="game_name" placeholder="Game ID"
 			br
-			input type="submit" value="Submit"
+			input.Input_Field type="submit" value="Submit"

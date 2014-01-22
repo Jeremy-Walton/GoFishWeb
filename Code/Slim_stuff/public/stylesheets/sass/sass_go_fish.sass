@@ -1,19 +1,23 @@
 $total-cols: 3
-$default-color: #87D0ED
-$secondary-color: #77BDD9
+$default-color: #8F8F8F
+$secondary-color: #6E6E6E
+
+html
+	font-size: 30px
+	font-family: tahoma
 
 body
 	background: url('../../cards/water.jpeg') repeat
 
 header
-	opacity: 0.8
+	opacity: 0.9
 	text-align: center
 	border-style: solid
 	border-radius: 50px 50px 0px 0px
-	background: -webkit-linear-gradient(white, $default-color)
-	background: -o-linear-gradient(white, $default-color)
-	background: -moz-linear-gradient(white, $default-color)
-	background: linear-gradient(white, $default-color)
+	background: -webkit-linear-gradient(white, $secondary-color)
+	background: -o-linear-gradient(white, $secondary-color)
+	background: -moz-linear-gradient(white, $secondary-color)
+	background: linear-gradient(white, $secondary-color)
 	ul
 		padding-left: 0px
 	li
@@ -30,7 +34,7 @@ header
 			color: black
 
 .Subheader
-	opacity: 0.8
+	opacity: 0.9
 	text-align: center
 	padding: 1px 1px
 	border-style: none solid
@@ -38,9 +42,12 @@ header
 	background: -o-linear-gradient($secondary-color, $default-color)
 	background: -moz-linear-gradient($secondary-color, $default-color)
 	background: linear-gradient($secondary-color, $default-color)
+	h1
+		opacity: 1
+		margin: 40px 0px
 
 .Content
-	opacity: 0.8
+	opacity: 0.9
 	padding: 1px
 	background: -webkit-linear-gradient($default-color, $secondary-color)
 	background: -o-linear-gradient($default-color, $secondary-color)
@@ -49,6 +56,10 @@ header
 	border:
 		radius: 0px 0px 50px 50px
 		style: none solid solid
+
+	.Input_Field
+		font-size: 15px
+
 	.Rules
 		max-width: 1368px
 		margin: 10px auto 0px auto
@@ -61,14 +72,17 @@ header
 			gap: 33%
 		h4
 			text-align: center
+			opacity: 1
 		div
 			text-align: center
 			a
 				color: black
+				opacity: 1
 	.About
 		width: 50%
 		margin: 0px auto
 		text-align: center
+		opacity: 1
 	&:after
 		content: "."
 		display: block
@@ -79,19 +93,27 @@ header
 
 #Hand, #Books, #Interface
 	display: inline-block
+	opacity: 1.0
 	width: 33%
 	text-align: center
 	vertical-align: top
+	p, label
+		// color: blue
+		opacity: 1
 	li
 		list-style: none
 		display: inline-block
-		text-indent: -2.1875em
+		text-indent: -1.1875em
+		opacity: 1.0
 
 #Results, #Opponent_Info
+	opacity: 1
 	text-align: center
 	display: inline-block
 	width: 50%
 	vertical-align: top
+	p, ul
+		// color: blue
 #Opponent_Info
 	ul 
 		padding-left: 0px

@@ -14,6 +14,10 @@ class FishBroker
 		@game_list[game_id].add_player(name)
 	end
 
+	def add_robot(game_id, name)
+		@game_list[game_id].add_robot(name)
+	end
+
 	def setup_game(game_id)
 		@game_list[game_id].setup
 	end

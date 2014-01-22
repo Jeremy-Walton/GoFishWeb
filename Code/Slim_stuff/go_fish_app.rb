@@ -33,14 +33,15 @@ class LoginScreen < GameScreen
 	end
 
 	get '/winscreen' do
+		"Game over! #{GoFish.winner}"
 		session.delete('logged_in')
 		GoFish.broker.game_list.delete(session['game_id'])
-		'What you doing here???'
 		# binding.pry
 	end
 
 	def set_session_variables(username)
-		session['game_id'] = username
+		time = Time.new
+		session['game_id'] = username + time.inspect.to_s
 		session['user_name'] = username
 		session['logged_in'] = true
 	end
@@ -97,9 +98,13 @@ end
 
 class GoFish < GameScreen
 	@@broker = FishBroker.new
-
+	@@winner = "Nobody yet."
 	def self.broker
 		@@broker
+	end
+
+	def self.winner
+		@@winner
 	end
 
   	use LoginScreen
@@ -111,9 +116,15 @@ class GoFish < GameScreen
   	end
   	get '/' do
   		@results = session['results']
+  		@game_id = session['game_id']
   		@game = @@broker.game_list[session['game_id']]
-  		if @game.deck.size == 0 || @game.nil?
-			redirect '/winscreen'
+  		if @game.winner != ''
+  			session.delete('logged_in')
+			# @@broker.game_list.delete(session['game_id'])
+		end
+  		if @game.deck.size == 0
+  			@@winner = @game.count_player_books
+			# redirect '/winscreen'
 		end
   		@player_names = []
   		@game.players.each do |player|
@@ -124,6 +135,7 @@ class GoFish < GameScreen
 		@game
 		@player_names
 		@username
+		@game_id
 		slim :Go_Fish
 	end
 

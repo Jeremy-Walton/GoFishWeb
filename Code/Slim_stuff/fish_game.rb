@@ -1,4 +1,5 @@
 require_relative './deck.rb'
+require_relative './fish_robot.rb'
 require_relative './round_results.rb'
 
 class FishGame
@@ -14,6 +15,10 @@ class FishGame
 
 	def add_player(name)
 		@players.push(FishHand.new([], name))
+	end
+
+	def add_robot(name)
+		@players.push(FishRobot.new([], name))
 	end
 
 	def count_player_books
@@ -36,7 +41,7 @@ class FishGame
 			end
 			@winner = "And the Winners are.. " + @winner + ". You guys rock!"
 		else
-			@winner = "And the Winner is.. "+@winner+". You rock!"
+			@winner = "And the Winner is.. "+@winner+"."
 		end
 		@winner
 	end

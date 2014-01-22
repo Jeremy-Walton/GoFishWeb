@@ -53,7 +53,6 @@ class Spinach::Features::GameTakesSuccesfullTurnsWithMultiplePlayers < Spinach::
     page.should have_text 'Jeremy asked'
 
     ::Capybara.session_name = 'second person'
-    visit '/'
     within '#Interface' do
       page.select 'Sam', :from => 'players'
       click_on 'Submit'
